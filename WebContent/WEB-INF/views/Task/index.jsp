@@ -4,12 +4,12 @@
     <c:param name="content">
         <h2>メッセージ一覧</h2>
         <ul>
-            <c:forEach var="message" items="${messages}">
+            <c:forEach var="task" items="${task}">
                 <li>
-                    <a href="${pageContext.request.contextPath}/show?id=${message.id}">
-                        <c:out value="${message.id}" />
+                    <a href="${pageContext.request.contextPath}/show?id=${task.id}">
+                        <c:out value="${task.id}" />
                     </a>
-                    ：<c:out value="${message.content}"></c:out>
+                    ：<c:out value="${task.content}"></c:out>
                 </li>
             </c:forEach>
         </ul>
@@ -17,4 +17,4 @@
         <p><a href="${pageContext.request.contextPath}/new">新規メッセージの投稿</a></p>
 
     </c:param>
-</c:import>
+</c:import>l

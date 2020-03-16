@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.tasks;
+import models.Task;
 import utils.DBUtil;
 
 /**
@@ -35,15 +35,15 @@ public class IndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
-        List<tasks> messages = em.createNamedQuery("getAllMessages", tasks.class)
+        List<Task> task = em.createNamedQuery("getAlltask", Task.class)
                                    .getResultList();
-        response.getWriter().append(Integer.valueOf(messages.size()).toString());
+        response.getWriter().append(Integer.valueOf(task.size()).toString());
 
         em.close();
 
-        request.setAttribute("messages", messages);
+        request.setAttribute("task", task);
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/messages/index.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/Task/index.jsp");
         rd.forward(request, response);
     }
 
